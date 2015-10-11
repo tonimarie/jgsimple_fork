@@ -12,10 +12,10 @@ Once the module is instantiated and loaded, it offers a promise to connect with 
 
 ## Sample call
 
-  q = jgSimpleApi.get(url, params).$promise;
-  
-  q.then(function(response) {
-    if ( (response) && (response.success) ) {
-      console.log(response.data);
-    }
-  });
+	q = jgSimpleApi.get(url, params).$promise;
+
+	q.then(function(response) {
+		if ( (response) && (response.success) ) {
+			console.log(response.data);
+		}
+	});
