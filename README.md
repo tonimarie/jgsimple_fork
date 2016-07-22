@@ -23,3 +23,34 @@ Once the module is instantiated and loaded, it offers a promise to connect with 
 			console.log(response.data);
 		}
 	});
+
+## A working project: JED Starter
+
+To check how it works in a real mobile app, please, visit the [JED Starter](http://www.joomgap.com/docs/).
+
+### Sample call to JED's "Install from Web" API
+
+    function query(params) {
+      var waitForData = $q.defer();
+      var url, q;
+
+      url = 'http://appscdn.joomla.org/webapps/index.php?format=json&option=com_apps&view=dashboard&product=Sm9vbWxhIQ==&release=My40&dev_level=NA==&list=grid&pv=MS4wLjU=';
+      q = JgSimpleResource.get(url, params).$promise;
+
+      q.then(function (response) {
+
+        if ((response) && (response.success)) {
+          waitForData.resolve(parseResponseCategories(response.data.html));
+        } else {
+          // No data, just return
+          waitForData.resolve([]);
+        }
+
+      }).catch(function () {
+        // No data, just return
+        waitForData.resolve([]);
+      });
+
+      return waitForData.promise;
+    };
+    
